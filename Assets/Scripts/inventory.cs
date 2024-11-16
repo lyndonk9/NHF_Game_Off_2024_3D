@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class inventory : MonoBehaviour
@@ -5,25 +6,16 @@ public class inventory : MonoBehaviour
     public Player_interaction player;
     public GameObject bluePotion;
     public GameObject redPotion;
+    public Dictionary<string, GameObject> potionDict = new Dictionary<string, GameObject>();
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
+        potionDict.Add("redpotion", redPotion);
+        potionDict.Add("bluepotion", bluePotion);
+    }
 
-        if (player.inventory[0] == 3)
-        {
-            bluePotion.SetActive(true);
-        }
-
-        if (player.inventory[0] == 2)
-        {
-            redPotion.SetActive(true);
-        }
-
-        if (player.inventory[0] == 0)
-        {
-            bluePotion.SetActive(false); redPotion.SetActive(false);
-        }
-
+    public void ShowItem(string potionKey)
+    {
+        potionDict[potionKey].SetActive(true);
     }
 }

@@ -1,90 +1,72 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player_interaction : MonoBehaviour
 {
     //text prompt object
     [SerializeField] GameObject textPrompt;
-    
-    //bool to determine whether or not player is in range of potion crate
-    public bool inRange;
-
-    //array to represent inventory items
-    public int[] inventory = new int[1];
 
     //string to represent which potion color crate the player is in range of
     public int potioncolorCode;
 
+    public GameObject heldItem;
+
+    [SerializeField] private inventory inventoryScript;
+
+    [SerializeField] private float moveSpeed = 6;
+
+
+    private Rigidbody rigidBody;
+
+    private Collider potionCrateCollider;
+
+    private Vector2 moveInput;
+
+    private String potionKey = "";
+
     public void Start()
     {
-        //instatiate inventory so it is empty (0,0)
-        inventory[0] = 0;
-
-        Debug.Log(inventory);
+        rigidBody = GetComponent<Rigidbody>();
     }
     
     //determines whether or not the player is within the range of the potion crate
-    public void OnTriggerEnter(Collider collision)
+    public void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.CompareTag("textprompttrigger"))
+        if (collider.gameObject.CompareTag("potioncrate"))
         {
+            potionCrateCollider = collider;
             textPrompt.SetActive(true);
-            inRange = true;
-
-        }
-
-        if (collision.gameObject.CompareTag("redpotiontrigger"))
-        {
-            potioncolorCode = 2;
-
-        }
-
-        if (collision.gameObject.CompareTag("bluepotiontrigger"))
-        {
-            potioncolorCode = 3;
-
         }
     }
-
 
     //triggers when player exit potion crate range
-    public void OnTriggerExit(Collider collision)
+    public void OnTriggerExit(Collider collider)
     {
-        if (collision.gameObject.CompareTag("textprompttrigger"))
+        if (collider.gameObject.CompareTag("potioncrate"))
         {
+            potionCrateCollider = null;
             textPrompt.SetActive(false);
-            inRange = false;
-            potioncolorCode = 0;
         }
     }
 
-        // Update is called once per frame
-    void Update()
+    public void FixedUpdate ()
     {
-        if (Input.GetKeyDown("e"))
-        {
-            if (inventory[0] != 0)
-            {
-                Debug.Log("inventory is full!");
-            }
-
-            if (inRange)
-            {
-
-                if (inventory[0] == 0)
-                {
-                    inventory[0] = potioncolorCode;
-                    Debug.Log("you picked up a potion! color code: " + potioncolorCode);
-                }
-
-            }
-
-        }
-
-                
-        }
+        rigidBody.linearVelocity = new Vector3(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
     }
 
-        
+    public void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+    }
 
+    public void OnInteract(InputValue value)
+    {
+        if (potionCrateCollider && potionKey.Length == 0)
+        {
+            potionKey = potionCrateCollider.gameObject.GetComponent<Potion_Crate>().potionKey;
+            inventoryScript.ShowItem(potionKey);
+        }
+    }
+}
 

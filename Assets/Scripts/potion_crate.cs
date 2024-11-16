@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class potion_crate : MonoBehaviour
+public class Potion_Crate : MonoBehaviour
 {
-    [SerializeField] public string potionCode;
-
+    public string potionKey;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
