@@ -1,18 +1,14 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
-public class Player_interaction : MonoBehaviour
+public class Player_Interaction : MonoBehaviour
 {
     //text prompt object
     [SerializeField] GameObject textPrompt;
 
-    //string to represent which potion color crate the player is in range of
-    public int potioncolorCode;
-
-    public GameObject heldItem;
-
-    [SerializeField] private inventory inventoryScript;
+    [SerializeField] private Inventory inventory;
 
     [SerializeField] private float moveSpeed = 6;
 
@@ -21,9 +17,13 @@ public class Player_interaction : MonoBehaviour
 
     private Collider potionCrateCollider;
 
+    private Collider cauldronCollider;
+
     private Vector2 moveInput;
 
     private String potionKey = "";
+
+    private bool isCollidingCauldron;
 
     public void Start()
     {
@@ -36,7 +36,12 @@ public class Player_interaction : MonoBehaviour
         if (collider.gameObject.CompareTag("potioncrate"))
         {
             potionCrateCollider = collider;
-            textPrompt.SetActive(true);
+            textPrompt.GetComponent<TMP_Text>().text = "Press E to pickup potion";
+        }
+        else if (collider.gameObject.CompareTag("cauldron"))
+        {
+            cauldronCollider = collider;
+            textPrompt.GetComponent<TMP_Text>().text = "Press E to add potion";
         }
     }
 
@@ -46,7 +51,12 @@ public class Player_interaction : MonoBehaviour
         if (collider.gameObject.CompareTag("potioncrate"))
         {
             potionCrateCollider = null;
-            textPrompt.SetActive(false);
+            textPrompt.GetComponent<TMP_Text>().text = "";
+        }
+        else if (collider.gameObject.CompareTag("cauldron"))
+        {
+            cauldronCollider = null;
+            textPrompt.GetComponent<TMP_Text>().text = "";
         }
     }
 
@@ -65,7 +75,13 @@ public class Player_interaction : MonoBehaviour
         if (potionCrateCollider && potionKey.Length == 0)
         {
             potionKey = potionCrateCollider.gameObject.GetComponent<Potion_Crate>().potionKey;
-            inventoryScript.ShowItem(potionKey);
+            inventory.ShowItem(potionKey);
+        } 
+        else if (cauldronCollider && potionKey.Length > 0)
+        {
+            cauldronCollider.gameObject.GetComponent<Cauldron>().AddItem(potionKey);
+            inventory.HideItem(potionKey);
+            potionKey = "";
         }
     }
 }
