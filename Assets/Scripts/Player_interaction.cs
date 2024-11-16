@@ -15,9 +15,9 @@ public class Player_Interaction : MonoBehaviour
 
     private Rigidbody rigidBody;
 
-    private Collider potionCrateCollider;
+    private GameObject potionCrate;
 
-    private Collider cauldronCollider;
+    private GameObject cauldron;
 
     private Vector2 moveInput;
 
@@ -35,13 +35,13 @@ public class Player_Interaction : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("potioncrate"))
         {
-            potionCrateCollider = collider;
+            potionCrate = collider.gameObject;
             textPrompt.GetComponent<TMP_Text>().text = "Press E to pickup potion";
         }
         else if (collider.gameObject.CompareTag("cauldron"))
         {
-            cauldronCollider = collider;
-            textPrompt.GetComponent<TMP_Text>().text = "Press E to add potion";
+            cauldron = collider.gameObject;
+            textPrompt.GetComponent<TMP_Text>().text = "Press E to add potion\nPress F to mix";
         }
     }
 
@@ -50,12 +50,12 @@ public class Player_Interaction : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("potioncrate"))
         {
-            potionCrateCollider = null;
+            potionCrate = null;
             textPrompt.GetComponent<TMP_Text>().text = "";
         }
         else if (collider.gameObject.CompareTag("cauldron"))
         {
-            cauldronCollider = null;
+            cauldron = null;
             textPrompt.GetComponent<TMP_Text>().text = "";
         }
     }
@@ -72,16 +72,24 @@ public class Player_Interaction : MonoBehaviour
 
     public void OnInteract(InputValue value)
     {
-        if (potionCrateCollider && potionKey.Length == 0)
+        if (potionCrate && potionKey.Length == 0)
         {
-            potionKey = potionCrateCollider.gameObject.GetComponent<Potion_Crate>().potionKey;
+            potionKey = potionCrate.gameObject.GetComponent<Potion_Crate>().potionKey;
             inventory.ShowItem(potionKey);
         } 
-        else if (cauldronCollider && potionKey.Length > 0)
+        else if (cauldron && potionKey.Length > 0)
         {
-            cauldronCollider.gameObject.GetComponent<Cauldron>().AddItem(potionKey);
+            cauldron.GetComponent<Cauldron>().AddItem(potionKey);
             inventory.HideItem(potionKey);
             potionKey = "";
+        }
+    }
+
+    public void OnMix(InputValue value)
+    {
+        if (cauldron)
+        {
+            cauldron.GetComponent<Cauldron>().MixPotion();
         }
     }
 }
