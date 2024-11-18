@@ -9,9 +9,9 @@ public class Cauldron : MonoBehaviour
 
     public List<string> ingredients = new List<string>();
 
-    private List<List<string>> recipes = new List<List<string>>()
+    private Dictionary<string, List<string>> recipes = new Dictionary<string, List<string>>()
     {
-        new List<string>() {"redpotion", "bluepotion"}
+        { "purplepotion", new List<string>() {"redpotion", "bluepotion"} }
     };
 
     public void AddItem(string potionKey)
@@ -27,10 +27,10 @@ public class Cauldron : MonoBehaviour
     {
         if (ingredients.Count > 0)
         {
-            recipes.ForEach(recipe =>
+            foreach(KeyValuePair<string, List<string>> recipe in recipes)
             {
-                List<string> recipeCopy = new List<string>(recipe);
-                PrintList(recipeCopy);
+                List<string> recipeCopy = new List<string>(recipe.Value);
+                PrintList(recipeCopy);  // debugging code
 
                 ingredients.ForEach(item =>
                 {
@@ -45,9 +45,9 @@ public class Cauldron : MonoBehaviour
                 }
                 else
                 {
-                    textPrompt.GetComponent<TMP_Text>().text = "Recipe Success!";
+                    textPrompt.GetComponent<TMP_Text>().text = "Recipe Success: " + recipe.Key + " was created!";
                 }
-            });
+            }
             ingredients.Clear();
         }
     }
