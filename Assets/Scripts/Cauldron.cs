@@ -6,6 +6,8 @@ public class Cauldron : MonoBehaviour
 {
     //text prompt object
     [SerializeField] GameObject textPrompt;
+    [SerializeField] GameObject purpleRecipe;
+    [SerializeField] private recipe_book recipeBook;
 
     public List<string> ingredients = new List<string>();
 
@@ -51,6 +53,7 @@ public class Cauldron : MonoBehaviour
             ingredients.Clear();
         }
     }
+
 
     private void PrintList(List<string> list)
     {
