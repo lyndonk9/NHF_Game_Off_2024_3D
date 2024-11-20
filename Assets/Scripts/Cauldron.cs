@@ -6,6 +6,7 @@ public class Cauldron : MonoBehaviour
 {
     //text prompt object
     [SerializeField] GameObject textPrompt;
+    [SerializeField] private DialougeTrigger dialogueTrigger; // Reference to DialogueTrigger component
 
     public List<string> ingredients = new List<string>();
 
@@ -21,6 +22,15 @@ public class Cauldron : MonoBehaviour
         // printing the list for debugging
         Debug.Log("ingredients:");
         PrintList(ingredients);
+    }
+
+    private void Awake()
+    {
+        // Get the DialogueTrigger component attached to the same GameObject
+        if (dialogueTrigger == null)
+        {
+            dialogueTrigger = GetComponent<DialougeTrigger>();
+        }
     }
 
     public void MixPotion()
@@ -46,6 +56,7 @@ public class Cauldron : MonoBehaviour
                 else
                 {
                     textPrompt.GetComponent<TMP_Text>().text = "Recipe Success: " + recipe.Key + " was created!";
+                    dialogueTrigger.TriggerDialouge(); // Call the function from DialogueTrigger
                 }
             }
             ingredients.Clear();
