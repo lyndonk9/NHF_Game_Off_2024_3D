@@ -15,6 +15,32 @@ public class DialougeManager : MonoBehaviour
     public void StartDialouge(Dialouge dialouge)
     {
         Debug.Log("Start Test" + dialouge.sentences);
+
+        sentences.Clear();
+
+        foreach (string sentence in dialouge.sentences)
+        {
+            sentences.Enqueue(sentence);
+        }
+
+        DisplayNextSentence();
+    }
+
+    public void DisplayNextSentence()
+    {
+        if (sentences.Count == 0)
+        {
+            EndDialouge();
+            return;
+        }
+
+        string sentence = sentences.Dequeue();
+        Debug.Log(sentence);
+    }
+
+    public void EndDialouge() 
+    {
+        Debug.Log("End Text");
     }
 
 }
