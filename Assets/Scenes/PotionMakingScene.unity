@@ -305,6 +305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b315e3c038a2b504d8e26bb134203d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialougeText: {fileID: 1262453970}
+  animator: {fileID: 525473457}
 --- !u!4 &329835066
 Transform:
   m_ObjectHideFlags: 0
@@ -331,6 +333,7 @@ GameObject:
   - component: {fileID: 525473454}
   - component: {fileID: 525473456}
   - component: {fileID: 525473455}
+  - component: {fileID: 525473457}
   m_Layer: 5
   m_Name: DialougeBox
   m_TagString: Untagged
@@ -355,10 +358,10 @@ RectTransform:
   - {fileID: 2061893208}
   m_Father: {fileID: 12812292}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -300}
-  m_SizeDelta: {x: -800, y: -800}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 240}
+  m_SizeDelta: {x: 1120, y: 280}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &525473455
 MonoBehaviour:
@@ -398,6 +401,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 525473453}
   m_CullTransparentMesh: 1
+--- !u!95 &525473457
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525473453}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 49b717ea6a3f30f42969e99b22f567ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &614067685 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6415510891960298581, guid: 401cdddc38dd1ce49a96882f0d613ec2, type: 3}
@@ -417,10 +442,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialouge:
     sentences:
-    - 'Hi test '
-    - Hi test 2
-    - Hi test 3
-    - Hi test 3
+    - ALL HAIL FULL METAL KITTY CAT ALCHMEMIST
+    - ALL HAIL FULL METAL KITTY CAT ALCHMEMIST
+    - ALL HAIL FULL METAL KITTY CAT ALCHMEMIST
+    - ALL HAIL FULL METAL KITTY CAT ALCHMEMIST
 --- !u!1001 &643243890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1002,7 +1027,7 @@ GameObject:
   - component: {fileID: 1262453971}
   - component: {fileID: 1262453970}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Dialouge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1024,8 +1049,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -100, y: 50}
+  m_SizeDelta: {x: 700, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1262453970
 MonoBehaviour:
@@ -1080,7 +1105,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1409,7 +1434,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1718,7 +1743,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2061893210}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 329835065}
+        m_TargetAssemblyTypeName: DialougeManager, Assembly-CSharp
+        m_MethodName: DisplayNextSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2061893210
 MonoBehaviour:
   m_ObjectHideFlags: 0
