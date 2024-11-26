@@ -1,28 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro; // Add this at the top
+
 public class DialougeManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-
     public TextMeshProUGUI dialougeText;
-    public Animator animator;
+    public TextMeshProUGUI dialougeText2;   // For DialogueBox2
+    public Animator animator;   // For DialogueBox
+    public Animator animator2;  // For DialogueBox2
 
     private Queue<string> sentences;
+    private bool useSecondBox; // Track which dialogue box is being used
 
     void Start()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartDialouge(Dialouge dialouge)
+    // Start a dialogue with the appropriate box based on the 'showSecondBox' parameter
+    public void StartDialouge(Dialouge dialouge, bool showSecondBox)
     {
-        Debug.Log("Start Test" + dialouge.sentences);
+        Debug.Log("Start Test: " + dialouge.sentences);
 
-        animator.SetBool("IsOpen", true);
+        animator.SetBool("IsOpen", !showSecondBox);
+        animator2.SetBool("IsOpen", showSecondBox);
+
+        useSecondBox = showSecondBox;  // Store whether to use the second box
 
         sentences.Clear();
 
@@ -34,6 +38,7 @@ public class DialougeManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    // Display the next sentence in the queue
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
@@ -45,35 +50,44 @@ public class DialougeManager : MonoBehaviour
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
-        //dialougeText.text = sentence;
         Debug.Log(sentence);
     }
 
-    //IEnumerator TypeSentence (string sentence)
-    //{
-    //    dialougeText.text = "";
-    //    foreach (char letter in sentence.ToCharArray()) 
-    //    {
-    //    dialougeText.text += letter;
-    //        yield return null;
-    //    }
-    //}
+    // Coroutine to type out the sentence
     IEnumerator TypeSentence(string sentence)
     {
-        dialougeText.text = "";
-        float typingSpeed = 0.05f; // Adjust this value for the desired speed (e.g., 0.05 seconds per character).
+        // Check which dialogue box to use (Main or Second)
+        TextMeshProUGUI currentText = useSecondBox ? dialougeText2 : dialougeText;
 
+        if (currentText == null)
+        {
+            Debug.LogError("TextMeshProUGUI reference is missing!");
+            yield break;
+        }
+
+        // Clear the text before typing it out
+        currentText.text = "";
+
+        // Log that the typing process started
+        Debug.Log("Typing sentence: " + sentence);
+
+        // Loop through each character in the sentence and display it with a delay
         foreach (char letter in sentence.ToCharArray())
         {
-            dialougeText.text += letter;
-            yield return new WaitForSeconds(typingSpeed);
+            currentText.text += letter;  // Add the letter to the text
+            yield return new WaitForSeconds(0.05f);  // Delay for the typing effect
         }
+
+        // Log when typing is finished
+        Debug.Log("Finished typing sentence: " + currentText.text);
     }
 
-    public void EndDialouge() 
+
+    // End the dialogue
+    public void EndDialouge()
     {
-        animator.SetBool("IsOpen", false);
+        animator.SetBool("IsOpen", false);   // Hide DialogueBox (main)
+        animator2.SetBool("IsOpen", false);  // Hide DialogueBox2 (secondary)
         Debug.Log("End Text");
     }
-
 }
