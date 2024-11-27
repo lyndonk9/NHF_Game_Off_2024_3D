@@ -216,8 +216,11 @@ RectTransform:
   m_Children:
   - {fileID: 1127968610}
   - {fileID: 1366062443}
-  - {fileID: 818999160}
   - {fileID: 1325215193}
+  - {fileID: 1571498762}
+  - {fileID: 48824205}
+  - {fileID: 818999160}
+  - {fileID: 42021002}
   - {fileID: 525473454}
   - {fileID: 243402265}
   m_Father: {fileID: 0}
@@ -240,8 +243,155 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 991535624}
-  bluePotion: {fileID: 818999157}
   redPotion: {fileID: 1325215190}
+  yellowPotion: {fileID: 1571498761}
+  greenPotion: {fileID: 48824204}
+  bluePotion: {fileID: 818999157}
+  purplePotion: {fileID: 42021001}
+--- !u!1 &42021001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 42021002}
+  - component: {fileID: 42021004}
+  - component: {fileID: 42021003}
+  m_Layer: 5
+  m_Name: Purple Potion UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &42021002
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42021001}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6487393, y: 1.6487393, z: 1.6487393}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 12812292}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 759.71, y: 322.57}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &42021003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42021001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 188f2b1e953a48c4db50504a1d465d79, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &42021004
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42021001}
+  m_CullTransparentMesh: 1
+--- !u!1 &48824204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48824205}
+  - component: {fileID: 48824207}
+  - component: {fileID: 48824206}
+  m_Layer: 5
+  m_Name: Green Potion UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &48824205
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48824204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6487393, y: 1.6487393, z: 1.6487393}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 12812292}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 759.71, y: 322.57}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &48824206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48824204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: a09bc293c7ba7024b880306c5333ae53, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &48824207
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48824204}
+  m_CullTransparentMesh: 1
 --- !u!1 &77578712
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,7 +851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.36
+      value: 3.36
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -709,7 +859,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.68
+      value: 3.8
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -903,7 +1053,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.15
+      value: -9.97
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -911,7 +1061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.01
+      value: 3.69
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1331,7 +1481,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.06
+      value: -5.37
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1339,7 +1489,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.81
+      value: 3.77
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1567,7 +1717,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.94
+      value: 8.03
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1575,7 +1725,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.66
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5301572978636047636, guid: c50564b94b1600b47a3050800e5f9a5b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2291,6 +2441,78 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1457290570}
+  m_CullTransparentMesh: 1
+--- !u!1 &1571498761
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1571498762}
+  - component: {fileID: 1571498764}
+  - component: {fileID: 1571498763}
+  m_Layer: 5
+  m_Name: Yellow Potion UI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1571498762
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571498761}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.6487393, y: 1.6487393, z: 1.6487393}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 12812292}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 759.71, y: 322.57}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1571498763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571498761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: c781296ea2fe8e24684e53662dd8e9cc, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1571498764
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571498761}
   m_CullTransparentMesh: 1
 --- !u!1 &1964748521
 GameObject:

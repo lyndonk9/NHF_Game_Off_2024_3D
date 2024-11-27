@@ -12,28 +12,18 @@ public class Cauldron : MonoBehaviour
 
     private Dictionary<string, List<string>> recipes = new Dictionary<string, List<string>>()
     {
-        //{ "purplepotion", new List<string>() {"redpotion", "bluepotion"} }
-         // Base combinations
-    { "purplepotion", new List<string>() { "redpotion", "bluepotion" } },
-    { "greenpotion", new List<string>() { "yellowpotion", "bluepotion" } },
-    { "orangepotion", new List<string>() { "redpotion", "yellowpotion" } },
+         // Level 2
+        { "10", new List<string>() { "1", "2" } },
+        { "20", new List<string>() { "1", "3", "5" } },
+        { "30", new List<string>() { "4", "5" } },
     
-    // New potions created by combining the base results
-    { "rainbowpotion", new List<string>() { "purplepotion", "greenpotion", "orangepotion" } },
-    { "cyanpotion", new List<string>() { "bluepotion", "greenpotion" } },
-    { "magenta", new List<string>() { "purplepotion", "redpotion" } },
-    { "sunshinepotion", new List<string>() { "orangepotion", "yellowpotion" } },
-    
-    // Secondary-level combinations
-    { "ultraviolet", new List<string>() { "purplepotion", "cyanpotion" } },
-    { "forestbrew", new List<string>() { "greenpotion", "yellowpotion" } },
-    { "sunsetelixir", new List<string>() { "orangepotion", "purplepotion" } },
-    { "aquapotion", new List<string>() { "cyanpotion", "bluepotion" } },
-    { "firestormpotion", new List<string>() { "orangepotion", "redpotion" } },
-    { "goldbrew", new List<string>() { "sunshinepotion", "yellowpotion" } },
-    
-    // Final result (combining advanced potions)
-    { "ultimatepotion", new List<string>() { "rainbowpotion", "ultraviolet", "goldbrew" }}
+        // Level 3
+        { "100", new List<string>() { "10", "3" } },
+        { "200", new List<string>() { "2", "20", "5" } },
+        { "300", new List<string>() { "4", "30" } },
+
+        // Final result (combining advanced potions)
+        { "1000", new List<string>() { "100", "200", "300", "1" }}
     };
 
     public void AddItem(string potionKey)
@@ -53,36 +43,6 @@ public class Cauldron : MonoBehaviour
             dialogueTrigger = GetComponent<DialougeTrigger>();
         }
     }
-
-    //public void MixPotion()
-    //{
-    //    if (ingredients.Count > 0)
-    //    {
-    //        foreach(KeyValuePair<string, List<string>> recipe in recipes)
-    //        {
-    //            List<string> recipeCopy = new List<string>(recipe.Value);
-    //            PrintList(recipeCopy);  // debugging code
-
-    //            ingredients.ForEach(item =>
-    //            {
-    //                recipeCopy.Remove(item);
-    //            });
-
-    //            PrintList(recipeCopy);
-
-    //            if (recipeCopy.Count > 0)
-    //            {
-    //                textPrompt.GetComponent<TMP_Text>().text = "Recipe Failed.";
-    //            }
-    //            else
-    //            {
-    //                textPrompt.GetComponent<TMP_Text>().text = "Recipe Success: " + recipe.Key + " was created!";
-    //                dialogueTrigger.TriggerDialouge(); // Call the function from DialogueTrigger
-    //            }
-    //        }
-    //        ingredients.Clear();
-    //    }
-    //}
 
     public void MixPotion()
     {
