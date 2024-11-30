@@ -140,7 +140,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
-    - _Drawing_Strength: 0.35
+    - _Drawing_Strength: -0.09
     - _DstBlend: 0
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
@@ -157,7 +157,7 @@ Material:
     - _SampleGI: 0
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _Smudge_Strength: 0.002
+    - _Smudge_Strength: 0.003
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
