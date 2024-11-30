@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using Unity.Mathematics;
 
 public class Player_Interaction : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class Player_Interaction : MonoBehaviour
     private Vector2 moveInput;
 
     private String potionKey = "";
+
+    public float rotationSpeed = 100f;
 
     private bool isCollidingCauldron;
 
@@ -60,15 +63,30 @@ public class Player_Interaction : MonoBehaviour
         }
     }
 
-    public void FixedUpdate ()
+    public void FixedUpdate()
     {
+        // Apply movement
         rigidBody.linearVelocity = new Vector3(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
+
+        // Rotate the character if there's input
+        if (moveInput.sqrMagnitude > 0.01f) // Check for non-zero input
+        {
+            // Reverse Y-axis for up and down arrow keys
+            float angle = Mathf.Atan2(-moveInput.y, moveInput.x) * Mathf.Rad2Deg;
+
+            // Smooth rotation
+            Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
+        }
     }
 
     public void OnMove(InputValue value)
     {
+        // Get and normalize the input
         moveInput = value.Get<Vector2>();
     }
+
+
 
     public void OnInteract(InputValue value)
     {
