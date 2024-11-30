@@ -13,6 +13,7 @@ public class Player_Interaction : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 6;
 
+    [SerializeField] private Animator characterAnimator;
 
     private Rigidbody rigidBody;
 
@@ -65,6 +66,8 @@ public class Player_Interaction : MonoBehaviour
 
     public void FixedUpdate()
     {
+     
+
         // Apply movement
         rigidBody.linearVelocity = new Vector3(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
 
@@ -78,13 +81,31 @@ public class Player_Interaction : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0, angle, 0);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.fixedDeltaTime * rotationSpeed);
         }
+
+        
+
+
     }
+
 
     public void OnMove(InputValue value)
     {
-        // Get and normalize the input
+        // Get the input
         moveInput = value.Get<Vector2>();
+
+        if (moveInput.sqrMagnitude > 0.01f) // Non-zero input (movement detected)
+        {
+            // Trigger the Walk animation
+            characterAnimator.SetBool("Walk", true);
+        }
+        else
+        {
+            // Trigger the Walk animation
+            characterAnimator.SetBool("Walk", false);
+        }
     }
+
+
 
 
 
