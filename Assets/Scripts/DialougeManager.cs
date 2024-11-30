@@ -20,16 +20,31 @@ public class DialougeManager : MonoBehaviour
         Debug.Log("Sentences queue initialized: " + (sentences != null));
 
         // Check if references are assigned
-        Debug.Log("dialougeText: " + (dialougeText != null ? "Assigned" : "Missing"));
-        Debug.Log("dialougeText2: " + (dialougeText2 != null ? "Assigned" : "Missing"));
-        Debug.Log("animator: " + (animator != null ? "Assigned" : "Missing"));
-        Debug.Log("animator2: " + (animator2 != null ? "Assigned" : "Missing"));
+        //Debug.Log("dialougeText: " + (dialougeText != null ? "Assigned" : "Missing"));
+        //Debug.Log("dialougeText2: " + (dialougeText2 != null ? "Assigned" : "Missing"));
+        //Debug.Log("animator: " + (animator != null ? "Assigned" : "Missing"));
+        //Debug.Log("animator2: " + (animator2 != null ? "Assigned" : "Missing"));
+    }
+
+    public static DialougeManager Instance;
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep the same instance
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy duplicate instances
+        }
     }
 
     // Start a dialogue with the appropriate box based on the 'showSecondBox' parameter
     public void StartDialouge(Dialouge dialouge, bool showSecondBox)
     {
-        Debug.Log("StartDialouge called. Using second box: " + showSecondBox);
+        //Debug.Log("StartDialouge called. Using second box: " + showSecondBox);
 
         // Ensure sentences queue is initialized
         if (sentences == null)
@@ -63,9 +78,9 @@ public class DialougeManager : MonoBehaviour
         }
 
         // Check if the Animator components are still valid before calling SetBool
-        Debug.Log("Checking Animator status before SetBool:");
-        Debug.Log($"Animator 1 Assigned: {animator != null}, Animator 1 Active: {animator.gameObject.activeSelf}");
-        Debug.Log($"Animator 2 Assigned: {animator2 != null}, Animator 2 Active: {animator2.gameObject.activeSelf}");
+        //Debug.Log("Checking Animator status before SetBool:");
+        //Debug.Log($"Animator 1 Assigned: {animator != null}, Animator 1 Active: {animator.gameObject.activeSelf}");
+        //Debug.Log($"Animator 2 Assigned: {animator2 != null}, Animator 2 Active: {animator2.gameObject.activeSelf}");
 
 
         // Ensure TextMeshProUGUI references are properly initialized
@@ -93,6 +108,8 @@ public class DialougeManager : MonoBehaviour
         }
 
         Debug.Log("Queue size after enqueuing: " + sentences.Count);
+        // Log to ensure sentences are added
+        Debug.Log("Enqueued sentences: " + string.Join(", ", dialouge.sentences));
 
         // Set which dialogue box to show
         animator.SetBool("IsOpen", !showSecondBox);
@@ -104,10 +121,38 @@ public class DialougeManager : MonoBehaviour
         DisplayNextSentence();
     }
 
+    // Start dialogue using the Dialouge object (default behavior)
+    //public void StartDialogue(Dialouge dialouge, bool useSecondBox)
+    //{
+    //    sentences.Clear();
+
+    //    foreach (string sentence in dialouge.sentences)
+    //    {
+    //        sentences.Enqueue(sentence);
+    //    }
+
+    //    animator.SetBool("IsOpen", !useSecondBox);
+    //    animator2.SetBool("IsOpen", useSecondBox);
+
+    //    DisplayNextSentence();
+    //}
+
+    //// Start dialogue using a single dynamic text (custom behavior)
+    //public void StartDialogue(string customText, bool useSecondBox)
+    //{
+    //    sentences.Clear();
+    //    sentences.Enqueue(customText);
+
+    //    animator.SetBool("IsOpen", !useSecondBox);
+    //    animator2.SetBool("IsOpen", useSecondBox);
+
+    //    DisplayNextSentence();
+    //}
+
     // Display the next sentence in the queue
     public void DisplayNextSentence()
     {
-        Debug.Log("Displaying next sentence");
+        Debug.Log(sentences.Count + "Displaying next sentence");
 
         if (sentences.Count == 0)
         {
@@ -128,7 +173,7 @@ public class DialougeManager : MonoBehaviour
     // Coroutine to type out the sentence
     IEnumerator TypeSentence(string sentence)
     {
-        Debug.Log("Typing sentence: " + sentence);
+        //Debug.Log("Typing sentence: " + sentence);
 
         // Determine which dialogue box to use (Main or Second)
         TextMeshProUGUI currentText = useSecondBox ? dialougeText2 : dialougeText;
@@ -142,16 +187,16 @@ public class DialougeManager : MonoBehaviour
 
         // Clear the current text and start typing the new sentence
         currentText.text = "";
-        Debug.Log("Cleared text, starting to type...");
+        //Debug.Log("Cleared text, starting to type...");
 
         foreach (char letter in sentence.ToCharArray())
         {
             currentText.text += letter;  // Add the letter to the text
-            Debug.Log("Added letter: " + letter);
+            //Debug.Log("Added letter: " + letter);
             yield return new WaitForSeconds(0.05f);  // Delay for the typing effect
         }
 
-        Debug.Log("Finished typing sentence: " + currentText.text);
+        //Debug.Log("Finished typing sentence: " + currentText.text);
     }
 
     // End the dialogue
@@ -163,7 +208,7 @@ public class DialougeManager : MonoBehaviour
         Debug.Log("End of dialogue");
 
         // Log whether the dialogue boxes are still active
-        Debug.Log("Dialouge Box 1 Active (End): " + dialougeText.gameObject.activeSelf);
-        Debug.Log("Dialouge Box 2 Active (End): " + dialougeText2.gameObject.activeSelf);
+        //Debug.Log("Dialouge Box 1 Active (End): " + dialougeText.gameObject.activeSelf);
+        //Debug.Log("Dialouge Box 2 Active (End): " + dialougeText2.gameObject.activeSelf);
     }
 }

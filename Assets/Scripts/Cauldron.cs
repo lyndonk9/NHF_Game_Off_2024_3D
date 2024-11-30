@@ -82,7 +82,47 @@ public class Cauldron : MonoBehaviour
             ingredients.Clear();
         }
     }
+    //public void MixPotion()
+    //{
+    //    if (ingredients.Count > 0)
+    //    {
+    //        bool recipeFound = false;
 
+    //        foreach (KeyValuePair<string, List<string>> recipe in recipes)
+    //        {
+    //            List<string> recipeCopy = new List<string>(recipe.Value);
+
+    //            ingredients.ForEach(item =>
+    //            {
+    //                recipeCopy.Remove(item);
+    //            });
+
+    //            if (recipeCopy.Count == 0)
+    //            {
+    //                string successText = "Recipe Success: " + recipe.Key + " was created!";
+    //                textPrompt.GetComponent<TMP_Text>().text = successText;
+    //                Debug.Log(successText);
+
+    //                recipeFound = true;
+    //                // Trigger success dialogue with custom text in DialogueBox2
+    //                dialogueTrigger.TriggerDialouge(true, successText);
+    //                break;
+    //            }
+    //        }
+
+    //        if (!recipeFound)
+    //        {
+    //            string failureText = "Recipe Failed.";
+    //            textPrompt.GetComponent<TMP_Text>().text = failureText;
+    //            Debug.Log(failureText);
+
+    //            // Trigger failure dialogue with custom text in DialogueBox2
+    //            dialogueTrigger.TriggerDialouge(true, failureText);
+    //        }
+
+    //        ingredients.Clear();
+    //    }
+    //}
 
 
 
