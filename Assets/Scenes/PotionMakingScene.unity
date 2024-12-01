@@ -669,8 +669,8 @@ MonoBehaviour:
   dialouge:
     sentences:
     - Happy Happy Happy Happy Happy 5
-    - Sad
-    - Happy
+    - Happy Happy Happy Happy Happy 5
+    - Happy Happy Happy Happy Happy 5
   autoStart: 1
 --- !u!4 &415552130
 Transform:
@@ -776,7 +776,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &510138978
 RectTransform:
   m_ObjectHideFlags: 0
