@@ -61,7 +61,7 @@ public class Cauldron : MonoBehaviour
 
                 if (recipeCopy.Count == 0)
                 {
-                    textPrompt.GetComponent<TMP_Text>().text = "Recipe Success: " + recipe.Key + " was created!";
+                    textPrompt.GetComponent<TMP_Text>().text = "Meowow,I did it!!! Recipe Success: " + recipe.Key + " was created!";
                     Debug.Log("Recipe Success: " + recipe.Key);
 
                     recipeFound = true;
@@ -73,10 +73,10 @@ public class Cauldron : MonoBehaviour
 
             if (!recipeFound)
             {
-                textPrompt.GetComponent<TMP_Text>().text = "Recipe Failed.";
+                textPrompt.GetComponent<TMP_Text>().text = "Oops, meow bad Meow ay ay Recipe Failed.";
                 Debug.Log("Recipe Failed.");
                 // Trigger failure dialogue and show DialogueBox2
-                dialogueTrigger.TriggerDialouge(false);
+                dialogueTrigger.TriggerDialouge(true);
             }
 
             ingredients.Clear();
