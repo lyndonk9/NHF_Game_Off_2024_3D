@@ -14,6 +14,9 @@ public class Player_Interaction : MonoBehaviour
 
     [SerializeField] private Animator characterAnimator;
 
+    [SerializeField] private GameObject potion;
+
+    [SerializeField] private AudioSource potionPickupsfx;
 
     private Rigidbody rigidBody;
 
@@ -104,12 +107,15 @@ public class Player_Interaction : MonoBehaviour
         {
             potionKey = potionCrate.gameObject.GetComponent<Potion_Crate>().potionKey;
             inventory.ShowItem(potionKey);
+            potion.SetActive(true);
+            potionPickupsfx.Play();
         } 
         else if (cauldron && potionKey.Length > 0)
         {
             cauldron.GetComponent<Cauldron>().AddItem(potionKey);
             inventory.HideItem(potionKey);
             potionKey = "";
+            potion.SetActive(false);
         }
     }
 
@@ -118,6 +124,7 @@ public class Player_Interaction : MonoBehaviour
         if (cauldron)
         {
             cauldron.GetComponent<Cauldron>().MixPotion();
+            
         }
     }
 }
