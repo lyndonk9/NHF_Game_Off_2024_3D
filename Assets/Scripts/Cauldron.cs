@@ -13,14 +13,14 @@ public class Cauldron : MonoBehaviour
     private Dictionary<string, List<string>> recipes = new Dictionary<string, List<string>>()
     {
          // Level 2
-        { "10", new List<string>() { "1", "2" } },
-        { "20", new List<string>() { "1", "3", "5" } },
-        { "30", new List<string>() { "4", "5" } },
+        { "Powerful Elixir", new List<string>() { "1", "2" } },
+        { "Ocean potion", new List<string>() { "1", "3", "5" } },
+        { "Fairy wings", new List<string>() { "4", "5" } },
     
         // Level 3
-        { "100", new List<string>() { "10", "3" } },
-        { "200", new List<string>() { "2", "20", "5" } },
-        { "300", new List<string>() { "4", "30" } },
+        { "100", new List<string>() { "Powerful Elixir", "3" } },
+        { "200", new List<string>() { "2", "Ocean Potion", "5" } },
+        { "300", new List<string>() { "4", "Fairy Wings" } },
 
         // Final result (combining advanced potions)
         { "1000", new List<string>() { "100", "200", "300", "1" }}
