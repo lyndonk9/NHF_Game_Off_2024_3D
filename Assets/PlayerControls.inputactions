@@ -167,6 +167,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "4cd4ec66-10f9-4c20-ac75-ad7969b7fd13",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "9d8eb52e-fcb3-4e1c-945c-5c41e05bb71d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0966829c-6ea4-4d98-8131-392e773aeca2",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

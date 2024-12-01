@@ -1,0 +1,34 @@
+{
+    "name": "PleyerDialogue",
+    "maps": [
+        {
+            "name": "UI",
+            "id": "439f9f5c-e4bd-41a3-886f-85cd5ea0022d",
+            "actions": [
+                {
+                    "name": "Next",
+                    "type": "Button",
+                    "id": "81eaa275-1928-4c30-b1b2-13c6fb780d19",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a4343c4f-47d1-44f6-b9a2-8f0ea517eef8",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
