@@ -1624,9 +1624,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialouge:
     sentences:
-    - Happy Happy Happy Happy Happy 5
-    - Happy Happy Happy Happy Happy 5
-    - Happy Happy Happy Happy Happy 5
+    - 'Controls: Enter Key to advance dialouge, WSAD Keys to move'
+    - 'Controls:  E key to pickup potions, E to drop off potions, F to mix potions.'
+    - Dear my beloved grandkitty!!!
+    - It seems that my time is coming to a close. I was compelled to write to you
+      before my memory fades any further.
+    - As a meowitch, I developed a powerful and perhaps a deadly potion. And I think
+      you should be the one to replicate this.
+    - I just cannot seem to recall the exact recipes to have them in writing for
+      you. You can find my recipe book from the shelf in the potion room.
+    - I trust that you can recreate this recipe, and maintain our honour as meowitches.
+    - Love,
+    - Your Granny Meowitch.
+    - 'Rules: Mix the potions to find the recipe'
   autoStart: 1
 --- !u!4 &415552130
 Transform:
